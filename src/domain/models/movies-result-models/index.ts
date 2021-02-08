@@ -1,4 +1,4 @@
-export * from './available-channels'
+export * from './available-channel'
 export * from './image'
 export * from './is-ppv-linear'
 export * from './item'
