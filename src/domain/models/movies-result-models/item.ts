@@ -7,12 +7,12 @@ import {
 } from '@/domain/models/movies-result-models'
 
 export type Item = {
-  availableChannels?: [AvailableChannel]
+  availableChannels?: AvailableChannel[]
   title?: string
   menuAction: string
   hashKey?: string
   isBlocked?: boolean
-  images?: [Image]
+  images?: Image[]
   categories?: string
   cast?: []
   programType?: string
@@ -26,7 +26,7 @@ export type Item = {
   tags?: Tags
   isCvod?: boolean
   isPPVLinear?: IsPPVLinear
-  canBeWatchedOn?: [string]
+  canBeWatchedOn?: string[]
   isElegible?: false
   isEligible?: false
   isAvailable?: true

@@ -1,10 +1,10 @@
 import { AvailableChannel, Image } from '@/domain/models/movies-result-models'
 
 export interface Movie {
-  availableChannels: [AvailableChannel]
+  availableChannels: AvailableChannel[]
   title: string
   isBlocked: boolean
-  images: [Image]
+  images: Image[]
   categories: string
   cast: []
   programId: string

@@ -1,4 +1,4 @@
 export interface IsPPVLinear {
   availablePayPerViewLinear: boolean
-  technology: [string]
+  technology: string[]
 }
