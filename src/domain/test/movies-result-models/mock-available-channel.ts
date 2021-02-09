@@ -12,3 +12,9 @@ export const mockAvailableChannel = (): AvailableChannel => ({
     items: []
   }
 })
+
+export const mockAvailableChannels = (): AvailableChannel[] => ([
+  mockAvailableChannel(),
+  mockAvailableChannel(),
+  mockAvailableChannel()
+])

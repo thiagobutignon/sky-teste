@@ -8,3 +8,9 @@ export const mockImage = (): Image => ({
   isS3: faker.random.boolean(),
   url: faker.internet.url()
 })
+
+export const mockImages = (): Image[] => ([
+  mockImage(),
+  mockImage(),
+  mockImage()
+])
