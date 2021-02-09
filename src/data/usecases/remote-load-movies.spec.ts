@@ -1,7 +1,7 @@
+import { UnexpectedError } from '@/domain/errors/unexpected-error'
 import { HttpClientSpy } from '@/data/test/mock-http'
 import faker from 'faker'
 import { RemoteLoadMovies } from '@/data/usecases'
-import { mockLoadMovies } from '@/domain/test/mock-load-movies'
 
 type SutTypes = {
   sut: RemoteLoadMovies
@@ -19,12 +19,21 @@ describe('RemoteLoadMovies', () => {
     const url = faker.internet.url()
     const { sut, httpClientSpy } = makeSut(url)
     httpClientSpy.response = {
-      statusCode: 200,
-      body: mockLoadMovies()
+      statusCode: 200
     }
 
     await sut.load()
     expect(httpClientSpy.url).toBe(url)
     expect(httpClientSpy.method).toBe('get')
+  })
+
+  test('Should throw UnexpectedError if HttpClient not returns 200', async () => {
+    const url = faker.internet.url()
+    const { sut, httpClientSpy } = makeSut(url)
+    httpClientSpy.response = {
+      statusCode: faker.random.number()
+    }
+    const promise = sut.load()
+    await expect(promise).rejects.toThrow(new UnexpectedError())
   })
 })
