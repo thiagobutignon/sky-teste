@@ -6,7 +6,7 @@ export interface Movie {
   isBlocked: boolean
   images: Image[]
   categories: string
-  cast: []
+  cast: any[]
   programId: string
   programType: string
   sheetType: number

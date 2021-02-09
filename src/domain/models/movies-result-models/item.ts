@@ -14,22 +14,22 @@ export type Item = {
   isBlocked?: boolean
   images?: Image[]
   categories?: string
-  cast?: []
+  cast?: any[]
   programType?: string
   sheetType?: number
   description?: string
   shortDescription?: string
   year?: number
-  schedules?: []
+  schedules?: any[]
   action?: string
   secondaryActions?: SecondaryAction
   tags?: Tags
   isCvod?: boolean
   isPPVLinear?: IsPPVLinear
   canBeWatchedOn?: string[]
-  isElegible?: false
-  isEligible?: false
-  isAvailable?: true
+  isElegible?: boolean
+  isEligible?: boolean
+  isAvailable?: boolean
   price?: string
   subtitle?: string
   priceDouble?: any
