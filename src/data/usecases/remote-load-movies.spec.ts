@@ -1,4 +1,6 @@
-import { UnexpectedError } from '@/domain/errors/unexpected-error'
+import { HttpStatusCode } from '@/data/protocols/http'
+import { mockLoadMovies } from '@/domain/test'
+import { UnexpectedError } from '@/domain/errors'
 import { HttpClientSpy } from '@/data/test/mock-http'
 import faker from 'faker'
 import { RemoteLoadMovies } from '@/data/usecases'
@@ -35,5 +37,16 @@ describe('RemoteLoadMovies', () => {
     }
     const promise = sut.load()
     await expect(promise).rejects.toThrow(new UnexpectedError())
+  })
+
+  test('Should return mockLoadMovies if HttpClient returns 200', async () => {
+    const { sut, httpClientSpy } = makeSut()
+    const httpResult = mockLoadMovies()
+    httpClientSpy.response = {
+      statusCode: HttpStatusCode.ok,
+      body: httpResult
+    }
+    const loadMovies = await sut.load()
+    expect(loadMovies).toEqual(httpResult)
   })
 })
