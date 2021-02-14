@@ -1,0 +1,8 @@
+export { default as SkyLogo } from './sky-logo'
+export { default as Accessibility } from './accessibility'
+export { default as Half } from './half'
+export { default as IncreaseFont } from './increase-font'
+export { default as DecreaseFont } from './decrease-font'
+export { default as MinhaSky } from './minha-sky'
+export { default as PlayStore } from './play-store'
+export { default as AppleStore } from './apple-store'
