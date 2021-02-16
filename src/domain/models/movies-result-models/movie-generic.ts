@@ -1,8 +1,7 @@
-import { Item, Movie } from '@/domain/models/movies-result-models'
+import { Item } from '@/domain/models/movies-result-models'
 
 export interface MovieGeneric {
   type: string
-  title?: string
-  items?: Item[]
-  movies?: Movie[]
+  title: string
+  items: Item[]
 }

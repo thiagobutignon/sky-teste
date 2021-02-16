@@ -1,14 +1,15 @@
+import { Item } from '@/domain/models/movies-result-models'
 import { UnexpectedError } from '@/domain/errors/unexpected-error'
 import { HttpClient, HttpStatusCode } from '@/data/protocols/http/http-client'
 import { LoadMovies } from '@/domain/usecases/load-movies'
 
 export class RemoteLoadMovies implements LoadMovies {
-  constructor (
+  constructor(
     private readonly url: string,
     private readonly httpClient: HttpClient<RemoteLoadMovies.ResultModel>
   ) {}
 
-  async load (): Promise<RemoteLoadMovies.ResultModel> {
+  async load(): Promise<RemoteLoadMovies.ResultModel> {
     const httpResponse = await this.httpClient.request({
       url: this.url,
       method: 'get'
@@ -19,7 +20,8 @@ export class RemoteLoadMovies implements LoadMovies {
     switch (httpResponse.statusCode) {
       case HttpStatusCode.ok:
         return remoteLoadMovies
-      default: throw new UnexpectedError()
+      default:
+        throw new UnexpectedError()
     }
   }
 }
