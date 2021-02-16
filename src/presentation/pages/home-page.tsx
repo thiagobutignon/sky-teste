@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Layout } from '@/presentation/components/layout'
 import { MovieContext, MovieError, ShowMovies } from '@/presentation/components'
 import { LoadMovies } from '@/domain/usecases'
-import { Item, Movie, MovieGeneric } from '@/domain/models/movies-result-models'
+import { Item, Movie } from '@/domain/models/movies-result-models'
 import { useErrorHandler } from '@/presentation/hooks'
-import { MoviesResultModel } from '@/domain/models'
 import { Row } from 'antd'
 
 type Props = {
