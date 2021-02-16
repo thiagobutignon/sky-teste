@@ -1,8 +1,6 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 import 'antd/dist/antd.css'
+import Router from '@/main/router/router'
 
-import { Home } from '@/presentation/pages'
-ReactDOM.render(
-  <Home/>
-  , document.getElementById('main'))
+ReactDOM.render(<Router />, document.getElementById('main'))
