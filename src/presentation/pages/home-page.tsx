@@ -1,13 +1,48 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Layout } from '@/presentation/components/layout'
+import { MovieContext, MovieError, ShowMovies } from '@/presentation/components'
+import { LoadMovies } from '@/domain/usecases'
+import { Item, Movie, MovieGeneric } from '@/domain/models/movies-result-models'
+import { useErrorHandler } from '@/presentation/hooks'
+import { MoviesResultModel } from '@/domain/models'
+import { Row } from 'antd'
 
-const HomePage: React.FC = () => {
+type Props = {
+  loadMovies: LoadMovies
+}
+
+const HomePage: React.FC<Props> = ({ loadMovies }: Props) => {
+  const handleError = useErrorHandler((error: Error) => {
+    setState({ ...state, error: error.message })
+  })
+  const [state, setState] = useState({
+    items: [] as Item[],
+    movies: [] as Movie[],
+    error: '',
+    reload: false
+  })
+
+  useEffect(() => {
+    loadMovies
+      .load()
+      .then((movieResultModel) =>
+        setState({
+          ...state,
+          movies: movieResultModel[2].movies,
+          items: movieResultModel[0].items
+        })
+      )
+      .catch(handleError)
+  }, [state.reload])
+
   return (
-    <>
-      <Layout>
-        <h1>Teste</h1>
-      </Layout>
-    </>
+    <Layout>
+      <Row>
+        <MovieContext.Provider value={{ state, setState }}>
+          {state.error ? <MovieError /> : <ShowMovies />}
+        </MovieContext.Provider>
+      </Row>
+    </Layout>
   )
 }
 
