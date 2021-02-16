@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { headerBackgroundColor } from '@/presentation/components/colors'
 import { Col, Layout, Row, Typography, Menu } from 'antd'
 import {
@@ -94,4 +94,4 @@ const CustomHeader: React.FC = () => {
   )
 }
 
-export default CustomHeader
+export default memo(CustomHeader)

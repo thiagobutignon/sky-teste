@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Col, Collapse, Divider, Layout, Row } from 'antd'
 import {
   AppleStore,
@@ -202,4 +202,4 @@ const CustomFooter: React.FC = () => {
   )
 }
 
-export default CustomFooter
+export default memo(CustomFooter)
