@@ -4,12 +4,8 @@
       "version": "detect"
     }
   },
-  "extends": [
-    "standard-with-typescript",
-    "plugin:react/recommended"
-  ],
-  "env": {
-  },
+  "extends": ["standard-with-typescript", "plugin:react/recommended"],
+  "env": {},
   "plugins": ["react"],
   "parserOptions": {
     "project": "./tsconfig-eslint.json"
@@ -26,6 +22,8 @@
     "no-redeclare": "off",
     "import/export": "off",
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "multiline-ternary": "off",
+    "no-case-declarations": "off"
   }
 }
